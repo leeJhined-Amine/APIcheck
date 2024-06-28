@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
+
+//sorry for the mistakes i made in the last commit, i was speed-running it, didn't even see if it's working or not 😅, it's working fine now!
 
 function UserList() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    const users = axios.get("https://jsonplaceholder.typicode.com/users");
-    setData(users);
+    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+      setData(res.data);
+    });
   }, []);
+  console.log(data);
   return (
     <section>
       <h1>
